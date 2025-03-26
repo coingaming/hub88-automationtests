@@ -72,13 +72,13 @@ describe('Provider Game URL API', () => {
     const games = gameCode.split(',').map(g => g.trim());
     const countries = countryCode.split(',').map(c => c.trim());
     const languages = langCode.split(',').map(l => l.trim());
-
     currencies.forEach(currency => {
         games.forEach(game => {
             validPlatforms.forEach(platform => {
                 countries.forEach(country => {
                     languages.forEach(lang => {
                         it(`Should get game URL for ${currency}, ${game}, ${platform}, ${country}, ${lang}`, () => {
+                            cy.step(`New Game Launcher request sent to the Supplier`)
                             const requestBody = {
                                 user: generateUser(),
                                 token: generateToken(),
