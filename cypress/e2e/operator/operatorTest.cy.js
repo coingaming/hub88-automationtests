@@ -1,7 +1,12 @@
-import { baseUrl, signature, operatorID } from '../../config/operatorConfig';
+
+import { baseUrl, operatorID, generateSignature, currencyCode, gameCode, countryCode, langCode } from '../../config/operatorConfig';
 
 describe('Game List API', () => {
   it('Should return a valid list of games', () => {
+
+    // Log the request details in Cypress UI
+    cy.log('Request Sent:', JSON.stringify(requestBody));
+
     cy.request({
       method: 'POST',
       url: `${baseUrl}/operator/generic/v2/game/list`,
@@ -12,7 +17,9 @@ describe('Game List API', () => {
       body: {
         operator_id: operatorID
       }
-    }).then((response) => {
+    })
+    
+    .then((response) => {
       expect(response.status).to.eq(200);
       expect(response.body).to.be.an('array');
       expect(response.body.length).to.be.greaterThan(0);
@@ -46,6 +53,10 @@ describe('Game List API', () => {
 
 describe('Game Round Check API', () => {
     it('Should return a valid round check URL', () => {
+
+      // Log the request details in Cypress UI
+      cy.log('Request Sent:', JSON.stringify(requestBody));
+
       cy.request({
         method: 'POST',
         url: `${baseUrl}/operator/generic/v2/game/round`,
@@ -68,6 +79,10 @@ describe('Game Round Check API', () => {
 
   describe('Game URL Generation API', () => {
     it('Should return a valid game URL', () => {
+      
+      // Log the request details in Cypress UI
+      cy.log('Request Sent:', JSON.stringify(requestBody));
+
       cy.request({
         method: 'POST',
         url: `${baseUrl}/operator/generic/v2/game/url`,
@@ -98,8 +113,7 @@ describe('Game Round Check API', () => {
     });
   });
 
-  import axios from 'axios';
-import { baseUrl, operatorID, generateSignature } from './operatorConfig';
+
 
 const validPlatforms = ["GPL_DESKTOP", "GPL_MOBILE"];
 
@@ -118,7 +132,7 @@ describe('Provider Game URL API', () => {
                 countries.forEach(country => {
                     languages.forEach(lang => {
                         it(`Should get game URL for ${currency}, ${game}, ${platform}, ${country}, ${lang}`, () => {
-                            cy.step(`New Game Launcher request sent to the Supplier`);
+                            cy.step(`New Game Launcher request sent to Hub88`);
                             const requestBody = {
                                 user: generateUser(),
                                 token: generateToken(),
@@ -142,7 +156,7 @@ describe('Provider Game URL API', () => {
 
                             cy.request({
                                 method: 'POST',
-                                url: `${baseUrl}/game/url`,
+                                url: `${baseUrl}/operator/generic/v2/game/url`,
                                 headers: {
                                     'Content-Type': 'application/json',
                                     'X-Hub88-Signature': signature
@@ -155,6 +169,7 @@ describe('Provider Game URL API', () => {
                                 // Validate the response contains a URL
                                 expect(response.body).to.have.property('url').that.is.a('string');
                                 expect(response.body.url).to.match(/^https?:\/\//);
+                                
                             });
                         });
                     });
