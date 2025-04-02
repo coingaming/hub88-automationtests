@@ -7,16 +7,21 @@ export const gameCode = 'clt_astrowild, clt_basketballpro';
 export const countryCode = 'FI';
 export const langCode = 'en';
 
-let privateKeyPromise;
+// Variable to store the private key
+let privateKey = null;
 
-// ✅ Load the private key before tests start
-before(() => {
-  privateKeyPromise = cy.task('readPrivateKey');
-});
+// Function to load the private key
+export const loadPrivateKey = () => {
+  return cy.task('readPrivateKey').then((key) => {
+    if (!key) {
+      throw new Error('❌ Failed to load private key from cy.task');
+    }
+    privateKey = key;
+    return key; // For chaining if needed
+  });
+};
 
 export async function generateSignature(payload) {
-  const privateKey = await privateKeyPromise; // ✅ Wait until the key is loaded
-
   if (!privateKey) {
     throw new Error('❌ Private key not loaded');
   }
