@@ -1,4 +1,4 @@
-# Operator API Testing Suite
+# Hub88 API Automated Testing Suite
 
 Welcome to the **Operator API Testing Suite**! This project is designed to test and validate the functionality of various API endpoints provided by a gaming operator platform. Using Cypress as the testing framework, this suite ensures that critical API responses meet expected standards for game lists, freebets, and game URLs.
 
