@@ -10,7 +10,7 @@ export const langCode = 'en';
 
 // Panel to test Freebets API
 export const operatorIDfreeBets = 1205;
-export const currencyCodefreeBets = 'EUR';
+export const currencyCodefreeBets = 'EUR, USD';
 export const gameCodefreeBets = 'clt_astrowild, clt_basketballpro';
 
 // Variable to store the private key
