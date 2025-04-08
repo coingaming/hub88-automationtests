@@ -3,15 +3,15 @@ import crypto from 'crypto';
 // Panel to test Game code and Game List
 export const baseUrl = 'https://api.server1.ih.testenv.io';
 export const operatorID = 1205;
-export const currencyCode = 'EUR';
-export const gameCode = 'clt_astrowild, clt_basketballpro';
+export const currencyCode = 'EUR, mBTC, ARS';
+export const gameCode = 'wzn_arcade, wzn_babylontreasure';
 export const countryCode = 'FI';
-export const langCode = 'en';
+export const langCode = 'en, es';
 
 // Panel to test Freebets API
 export const operatorIDfreeBets = 1205;
 export const currencyCodefreeBets = 'EUR, USD';
-export const gameCodefreeBets = 'clt_astrowild, clt_basketballpro';
+export const gameCodefreeBets = 'wzn_arcade, wzn_babylontreasure';
 
 // Variable to store the private key
 let privateKey = null;

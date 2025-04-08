@@ -57,15 +57,21 @@ describe('Provider Game URL API', () => {
                   },
                   body: requestBody,
                   failOnStatusCode: false // Temporarily for debugging
-                }).then((response) => {
-                  cy.step('✅ Validating response status');
-                  expect(response.status).to.eq(200, `Expected 200 but got ${response.status}: ${JSON.stringify(response.body)}`);
+                })
+                
+                .then((response) => {
 
-                  cy.step('📄 Validating response body structure');
-                  expect(response.body).to.have.property('url').that.is.a('string');
+                  cy.then(() => cy.step('✅ Validating response status')).then(() => {
+                    expect(response.status).to.eq(200, `Expected 200 but got ${response.status}: ${JSON.stringify(response.body)}`);
+                  });
+                  
+                  cy.then(() => cy.step('📄 Validating response body structure')).then(() => {
+                    expect(response.body).to.have.property('url').that.is.a('string');
+                  });
 
-                  cy.step('🔗 Validating response URL format');
-                  expect(response.body.url).to.match(/^https?:\/\/[^\s/$.?#].[^\s]*$/, 'Expected URL to be valid');
+                  cy.then(() => cy.step('🔗 Validating response URL format')).then(() => {
+                    expect(response.body.url).to.match(/^https?:\/\/[^\s/$.?#].[^\s]*$/, 'Expected URL to be valid');
+                  });
                 });
               });
             });
