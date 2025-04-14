@@ -45,18 +45,18 @@ The suite currently supports testing for:
 
 ## Project Structure
 operator-api-tests/
-├── config/
-│   ├── operatorConfig.js       # Main config for game list and freebets tests
-│   └── providerConfig.js       # Config for provider-specific settings
-├── cypress/
-│   ├── integration/
-│   │   ├── gameList.spec.js    # Tests for Game List API
-│   │   ├── freebets.spec.js    # Tests for Freebets API
-│   │   └── gameUrl.spec.js     # Tests for Game URL API
-│   └── support/
-│       └── commands.js         # Custom Cypress commands (if any)
-├── README.md                   # Project documentation (this file)
-└── package.json                # Project dependencies and scripts
+- ├── config/
+- │   ├── operatorConfig.js       # Main config for game list and freebets tests
+- │   └── providerConfig.js       # Config for provider-specific settings
+- ├── e2e/
+- │   ├── operator/
+- │   │   ├── gameList.cy.js    # Tests for Game List API
+- │   │   ├── freebets.cy.js    # Tests for Freebets API
+- │   │   └── gameUrl.cy.js     # Tests for Game URL API
+- │   └── provider/
+- │       └── supplierTest.cy.js         # Custom Cypress commands (if any)
+- ├── README.md                   # Project documentation (this file)
+- └── package.json                # Project dependencies and scripts
 
 
 ---
