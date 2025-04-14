@@ -43,7 +43,7 @@ describe('Operator Freebets API Tests', () => {
 
             if (response.body.length > 0) {
               response.body.forEach((freebet, index) => {
-                cy.step(`Validating Freebet Response #${index + 1}`).then(() => {
+                cy.step(`Validating Prepaid #${index + 1}`).then(() => {
                   // All validations for this freebet in one block
                   expect(freebet.prepaid_uuid).to.match(
                     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
