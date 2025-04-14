@@ -1,8 +1,10 @@
 import crypto from 'crypto';
 
-// Panel to test Game code and Game List
-export const baseUrl = 'https://api.as1.hub88.io'; //'https://api.server1.ih.testenv.io';
+// Generic Information to all Tests - Game List Parameter is Operator ID
+export const baseUrl = 'https://api.as1.hub88.io';
 export const operatorID = 221;
+
+// Panel to test Game Launcher
 export const currencyCode = 'USD, JPY';
 export const gameCode = 'klb_9blazingcashpots';
 export const countryCode = 'JP';
@@ -13,6 +15,7 @@ export const operatorIDfreeBets = 221;
 export const currencyCodefreeBets = 'JPY, USD';
 export const gameCodefreeBets = 'klb_9blazingcashpots';
 
+// Command to run Recorded Tests in the Terminal:
 // npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorGameLauncherTest.cy.js, cypress/e2e/operator/operatorGameListTest.cy.js, cypress/e2e/operator/operatorFreebetsAPI.cy.js"
 
 // Variable to store the private key

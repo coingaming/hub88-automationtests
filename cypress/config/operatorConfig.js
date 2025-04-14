@@ -1,8 +1,10 @@
 import crypto from 'crypto';
 
-// Panel to test Game code and Game List
+// Generic Information to all Tests - Game List Parameter is Operator ID
 export const baseUrl = 'https://api.server1.ih.testenv.io';
 export const operatorID = 1205;
+
+// Panel to test Game Launcher
 export const currencyCode = 'GLD, SS1';
 export const gameCode = 'pgp_5lionsgold, pgp_6jokers, pgp_7piggies';
 export const countryCode = 'US, DE';
@@ -13,7 +15,10 @@ export const operatorIDfreeBets = 1205;
 export const currencyCodefreeBets = 'EUR, USD';
 export const gameCodefreeBets = 'wzn_arcade, wzn_babylontreasure';
 
+// Command to run Recorded Tests in the Terminal:
 // npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorGameLauncherTest.cy.js, cypress/e2e/operator/operatorGameListTest.cy.js, cypress/e2e/operator/operatorFreebetsAPI.cy.js"
+
+
 
 // Variable to store the private key
 let privateKey = null;
