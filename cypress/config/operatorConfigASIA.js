@@ -6,17 +6,18 @@ export const operatorID = 221;
 
 // Panel to test Game Launcher
 export const currencyCode = 'USD, JPY';
-export const gameCode = 'klb_9blazingcashpots';
+export const gameCode = 'png_moonprincess100, nlc_duckhunters, nvm_5sevensholdwinchristmas, asg_baccaratn72, sbe_aviator, evo_bombayclubspeedroulette, bbl_baccarathighroller2, pgp_gatesofolympus1000, gmx_pilot, btsg_sportbetting, pgs_mahjongways2, tbg_mines, jdb_caishenfishing, hsg_wanteddeadorawild';
 export const countryCode = 'JP';
 export const langCode = 'jp';
 
 // Panel to test Freebets API
 export const operatorIDfreeBets = 221;
-export const currencyCodefreeBets = 'JPY, USD';
-export const gameCodefreeBets = 'klb_9blazingcashpots';
+export const currencyCodefreeBets = 'USD';
+export const gameCodefreeBets = 'klb_9blazingcashpots, png_moonprincess100, sbe_aviator, evo_bombayclubspeedroulette, bbl_baccarathighroller2, hsg_wanteddeadorawild';
 
 // Command to run Recorded Tests in the Terminal:
-// npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorGameLauncherTest.cy.js, cypress/e2e/operator/operatorGameListTest.cy.js, cypress/e2e/operator/operatorFreebetsAPI.cy.js"
+// npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorGameLauncherASIATest.cy.js"
+// npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorPrepaidsASIA.cy.js"
 
 // Variable to store the private key
 let privateKey = null;

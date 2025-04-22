@@ -24,10 +24,14 @@ describe('Provider Game URL API', () => {
         countries.forEach(country => {
           languages.forEach(lang => {
             it(`Should get game URL for ${currency}, ${game}, ${platform}, ${country}, ${lang}`, () => {
+              // Define specific game codes and their sub_partner_id
+              const specialGameCodes = ['gmx_pilot', 'btsg_sportbetting'];
+              const subPartnerId = specialGameCodes.includes(game) ? null : 'bender'; // Set null for special game codes, 'bender' for others
+            
               const requestBody = {
                 user: generateUser(),
                 token: generateToken(),
-                sub_partner_id: "bender",
+                sub_partner_id: subPartnerId, // Use the conditionally set sub_partner_id
                 platform: platform,
                 operator_id: operatorID,
                 meta: {},
@@ -60,7 +64,6 @@ describe('Provider Game URL API', () => {
                 })
                 
                 .then((response) => {
-
                   cy.then(() => cy.step('✅ Validating response status')).then(() => {
                     expect(response.status).to.eq(200, `Expected 200 but got ${response.status}: ${JSON.stringify(response.body)}`);
                   });
