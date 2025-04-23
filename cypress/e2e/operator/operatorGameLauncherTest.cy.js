@@ -71,6 +71,7 @@ describe('Provider Game URL API', () => {
 
                   cy.then(() => cy.step('🔗 Validating response URL format')).then(() => {
                     expect(response.body.url).to.match(/^https?:\/\/[^\s/$.?#].[^\s]*$/, 'Expected URL to be valid');
+                    expect(response.body.url).to.include('launcher.server1.ih.testenv.io/games', 'Expected URL to contain launcher-as1.fh8labs.com/games');
                   });
                 });
               });

@@ -5,10 +5,10 @@ export const baseUrl = 'https://api.server1.ih.testenv.io';
 export const operatorID = 1205;
 
 // Panel to test Game Launcher
-export const currencyCode = 'GLD, SS1';
-export const gameCode = 'pgp_5lionsgold, pgp_6jokers, pgp_7piggies';
+export const currencyCode = 'GLD';
+export const gameCode = 'pgp_5lionsgold';
 export const countryCode = 'US, DE';
-export const langCode = 'en, es';
+export const langCode = 'en';
 
 // Panel to test Freebets API
 export const operatorIDfreeBets = 1205;
@@ -25,7 +25,7 @@ let privateKey = null;
 
 // Function to load the private key
 export const loadPrivateKey = () => {
-  return cy.task('readPrivateKey').then((key) => {
+  return cy.task('readPrivateKeyStage').then((key) => {
     if (!key) {
       throw new Error('❌ Failed to load private key from cy.task');
     }
