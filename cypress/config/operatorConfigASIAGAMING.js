@@ -1,19 +1,26 @@
 import crypto from 'crypto';
 
-// Generic Information to all Tests - Game List Parameter is Operator ID
+// Europe Game Launcher
 export const baseUrl = 'https://api.hub88.io';
 export const operatorID = 220;
 
 // Panel to test Game Launcher
-export const currencyCode = 'USD';
-export const gameCode = 'asg_baccaratb1, asg_bullbull';
+export const currencyCode = 'USD, JPY';
+export const gameCode = 'asg_baccaratb1, asg_bullbull, asg_lobby, asg_baccaratn16, asg_baccaratn06';
 export const countryCode = 'JP';
 export const langCode = 'jp';
 
 // Panel to test Freebets API
 export const operatorIDfreeBets = 220;
-export const currencyCodefreeBets = 'USD';
+export const currencyCodefreeBets = 'USD, JPY';
 export const gameCodefreeBets = 'asg_baccaratb1, asg_bullbull';
+
+
+// Asia Game Launcher Asia Env
+export const baseUrlAsia = 'https://api.as1.hub88.io';
+export const operatorIDAsia = 221;
+export const gameCodeAsia = 'asg_baccaratn72, asg_micardbaccaratm90, asg_baccaratn08, asg_baccaratn06, asg_speedbaccaratm73';
+
 
 // Command to run Recorded Tests in the Terminal:
 // npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorGameLauncherASIAGAMINGTest.cy.js"
