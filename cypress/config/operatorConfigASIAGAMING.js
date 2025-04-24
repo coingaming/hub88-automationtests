@@ -23,7 +23,7 @@ export const gameCodeAsia = 'asg_baccaratn72, asg_micardbaccaratm90, asg_baccara
 
 
 // Command to run Recorded Tests in the Terminal:
-// npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorGameLauncherASIAGAMINGTest.cy.js"
+// npx cypress run --record --key c0520a37-0f02-43be-8d7d-c78f740590ea --spec "cypress/e2e/operator/operatorASIAGAMINGTest.cy.js"
 
 // Variable to store the private key
 let privateKey = null;
