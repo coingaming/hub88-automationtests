@@ -1,0 +1,12 @@
+{
+    "name": "signature-api",
+    "version": "1.0.0",
+    "main": "index-exp.js",
+    "scripts": {
+        "start": "node index-exp.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "node-forge": "^1.3.1"
+    }
+}
