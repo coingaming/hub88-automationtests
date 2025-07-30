@@ -25,7 +25,7 @@ test.describe('Provider Game URL API', () => {
           languages.forEach(lang => {
             test(`Should get game URL for ${currency}, ${game}, ${platform}, ${country}, ${lang}`, async () => {
               const specialGameCodes = ['gmx_pilot', 'btsg_sportbetting'];
-              const subPartnerId = specialGameCodes.includes(game) ? null : 'bender';
+              const subPartnerId = specialGameCodes.includes(game) ? null : '';
 
               const requestBody = {
                 user: generateUser(),
@@ -36,7 +36,7 @@ test.describe('Provider Game URL API', () => {
                 meta: {},
                 lobby_url: 'https://amazing-casino.com/lobby',
                 lang,
-                ip: '142.245.172.168',
+                ip: '0.0.0.0',
                 game_code: game,
                 deposit_url: 'https://amazing-casino.com/deposit',
                 currency,
@@ -63,7 +63,7 @@ test.describe('Provider Game URL API', () => {
               expect(body).toHaveProperty('url');
               expect(typeof body.url).toBe('string');
               expect(body.url).toMatch(/^https?:\/\/[^\s/$.?#].[^\s]*$/);
-              expect(body.url).toContain('launcher-as1.fh8labs.com/games');
+              expect(body.url).toContain('launcher-as1.hf8sbal.com/games');
             });
           });
         });
