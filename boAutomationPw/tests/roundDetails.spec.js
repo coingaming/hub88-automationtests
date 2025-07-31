@@ -9,8 +9,7 @@ const {
   supplierBox,
   supplierSearchInput,
   firstSupplierButton,
-  firstTableRoundDetailsButton,
-  transactionsText
+  firstTableRoundDetailsButton
 } = require('../pageObjects/transactions.js');
 
 test.use({ storageState: 'storageState.json' });
@@ -54,16 +53,16 @@ test.describe('Supplier roundDetails GraphQL check', () => {
 
       // Click the first label/div in the dropdown list
       const firstSupplierOption = page.locator(firstSupplierButton);
+      await page.waitForSelector(firstSupplierButton, { timeout: 1000 });
       await expect(firstSupplierOption).toBeVisible();
       await firstSupplierOption.click();
 
       // Click outside to confirm selection
-      await page.locator(transactionsText).click();
-
-      // Confirm selection by clicking outside
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[2]/div/div/div').click();
+      await page.locator(supplierDropdown).click();
 
       // Click the first button in the table
+      // console.log(`Clicking on roundDetails for supplier: ${firstTableRoundDetailsButton}`);
+      await page.waitForSelector(firstTableRoundDetailsButton, { timeout: 15000 });
       await page.locator(firstTableRoundDetailsButton).click();
 
       // Wait for GraphQL roundDetails request and check response

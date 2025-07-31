@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
+    "testb": "npx playwright test --headed",
     "login": "npx playwright codegen --save-storage=storageState.json https://bo-v3.hub88.io/transactions"
   },
   "keywords": [],
