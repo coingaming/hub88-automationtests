@@ -1,5 +1,15 @@
 const { test, expect } = require('@playwright/test');
 const config = require('../config/test.config.js');
+const {
+  rangeSelector,
+  yesterdayOption,
+  applyRangeButton,
+  supplierFilterTab,
+  supplierDropdown,
+  supplierSearchInput,
+  firstSupplierButton,
+  firstTableRoundDetailsButton
+} = require('../pageObjects/transactions.js');
 
 test.use({ storageState: 'storageState.json' });
 
@@ -17,26 +27,26 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       await page.goto(endpoint);
 
       // Click sequence to open supplier selection
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[1]/button').click();
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[1]/div/div/ul/li[3]').click();
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[1]/div/div/div[3]/button').click();
+      await page.locator(rangeSelector).first().click();
+      await page.locator(yesterdayOption).click();
+      await page.locator(applyRangeButton).click();
 
       // Selector of Filter Tabs
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[5]/button').click();
+      await page.locator(supplierFilterTab).click();
 
       // Open Supplier Filter
       await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[5]/div/div/div/div[9]').click();
 
       // Open supplier dropdown
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[2]/div/button').click();
+      await page.locator(supplierDropdown).click();
 
-      // Click the supplier input field
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[2]/div/div/div/div[1]/div/input').click();
-      // Type the supplier name
-      await page.keyboard.type(supplier);
+      const input = await page.waitForSelector(supplierSearchInput, { state: 'visible' });
+      await input.click({ clickCount: 3 }); // Select existing text
+      await input.fill('');                 // Clear the field
+      await input.type(supplier, { delay: 50 }); // Type the value like a user
 
       // Click the first label/div in the dropdown list
-      const firstSupplierOption = page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[2]/div/div/div/div[3]/div[1]');
+      const firstSupplierOption = page.locator(firstSupplierButton);
       await expect(firstSupplierOption).toBeVisible();
       await firstSupplierOption.click();
 
@@ -47,7 +57,7 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[2]/div/div/div').click();
 
       // Click the first button in the table
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[3]/div[1]/table/tbody/tr[1]/td[10]/div[2]/button[1]').click();
+      await page.locator(firstTableRoundDetailsButton).click();
 
       // Wait for GraphQL roundDetails request and check response
       const [graphql] = await Promise.all([
