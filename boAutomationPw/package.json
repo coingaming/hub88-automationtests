@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "login": "npx playwright codegen --save-storage=storageState.json https://bo-v3.hub88.io/transactions"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
