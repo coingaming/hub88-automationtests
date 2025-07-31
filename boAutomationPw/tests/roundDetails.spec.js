@@ -61,15 +61,20 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       await page.locator(supplierDropdown).click();
 
       // Click the first button in the table
-      // console.log(`Clicking on roundDetails for supplier: ${firstTableRoundDetailsButton}`);
+      console.log(`Clicking on roundDetails for supplier: ${firstTableRoundDetailsButton}`);
       await page.waitForSelector(firstTableRoundDetailsButton, { timeout: 15000 });
-      await page.locator(firstTableRoundDetailsButton).click();
+      await page.locator(firstTableRoundDetailsButton).first().click();
+      // Prevent the new tab from opening by intercepting window.open
+      await page.addInitScript(() => {
+        window.open = () => null;
+      });
 
-      // Wait for GraphQL roundDetails request and check response
+      // Wait for the GraphQL roundDetails request and get its response
       const [graphql] = await Promise.all([
-        page.waitForResponse(resp =>
-          resp.url().includes('/graphql') &&
-          resp.request().postData()?.includes('roundDetails')
+        page.waitForResponse(response =>
+          response.url().includes('/graphql') &&
+          response.request().method() === 'POST' &&
+          response.request().postData()?.includes('roundDetails')
         ),
       ]);
 
