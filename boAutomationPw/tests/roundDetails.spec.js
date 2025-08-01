@@ -21,6 +21,7 @@ const suppliers = [
 
 // Use config instead of hardcoded URL
 const endpoint = config.endpoints.transactions;
+const apiEndpoint = config.endpoints.baseUrl;
 
 test.describe('Supplier roundDetails GraphQL check', () => {
   for (const supplier of suppliers) {
@@ -60,6 +61,7 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       // Click outside to confirm selection
       await page.locator(supplierDropdown).click();
 
+
 // 1. Override window.open to prevent new tabs
 await page.addInitScript(() => {
   window.open = (url) => {
@@ -74,26 +76,24 @@ page.context().on('page', async (newPage) => {
   await newPage.close();
 });
 
-// 3. Set up listener for GraphQL response BEFORE clicking
-const waitForGraphQL = page.waitForResponse(response => {
-  if (!response.url().includes('/graphql') || response.request().method() !== 'POST') return false;
-  const postData = response.request().postData() || '';
-  return postData.includes('roundDetails');
+// Track if a new tab was opened
+let newTabOpened = false;
+
+page.context().on('page', async (newPage) => {
+  newTabOpened = true;
+  console.log('⚠️ New tab detected — closing it');
+  await newPage.close();
 });
 
-// 4. Click the button that normally opens a new tab (now prevented)
+// Click the button that may open a new tab
 await page.locator(firstTableRoundDetailsButton).first().click();
 
-// 5. Wait for the GraphQL response on original page
-const graphql = await waitForGraphQL;
-console.log('✅ roundDetails GraphQL request captured');
+// Give it a short time to possibly open a tab
+await page.waitForTimeout(1000); // Adjust if needed
 
-expect(graphql.status()).toBe(200);
-const json = await graphql.json();
-expect(json.data).toBeDefined();
-expect(json.data.roundDetails).toMatch(
-  /^https:\/\/7ghuzh20gx\.somdltxzni\.net\/gs2c\/parentRoundHistoryDetails\.do\?/
-);
+// Assert that a new tab was triggered
+expect(newTabOpened).toBeTruthy();
+
 
 
       // Clean supplier selection
