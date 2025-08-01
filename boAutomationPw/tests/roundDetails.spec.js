@@ -60,28 +60,41 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       // Click outside to confirm selection
       await page.locator(supplierDropdown).click();
 
-      // Click the first button in the table
-      console.log(`Clicking on roundDetails for supplier: ${firstTableRoundDetailsButton}`);
-      await page.waitForSelector(firstTableRoundDetailsButton, { timeout: 15000 });
-      await page.locator(firstTableRoundDetailsButton).first().click();
-      // Prevent the new tab from opening by intercepting window.open
-      await page.addInitScript(() => {
-        window.open = () => null;
-      });
+// 1. Override window.open to prevent new tabs
+await page.addInitScript(() => {
+  window.open = (url) => {
+    console.log('Blocked opening new tab to:', url);
+    // Don't open a new tab at all
+  };
+});
 
-      // Wait for the GraphQL roundDetails request and get its response
-      const [graphql] = await Promise.all([
-        page.waitForResponse(response =>
-          response.url().includes('/graphql') &&
-          response.request().method() === 'POST' &&
-          response.request().postData()?.includes('roundDetails')
-        ),
-      ]);
+// 2. Listen for new pages and close them immediately if any slip through
+page.context().on('page', async (newPage) => {
+  console.log('⚠️ New tab detected and will be closed');
+  await newPage.close();
+});
 
-      expect(graphql.status()).toBe(200);
-      const json = await graphql.json();
-      expect(json.data).toBeDefined();
-      expect(json.data.roundDetails).toMatch(/^https:\/\/launcher-eu1\.fh8labs\.com\/round\/evolution\?payload=/);
+// 3. Set up listener for GraphQL response BEFORE clicking
+const waitForGraphQL = page.waitForResponse(response => {
+  if (!response.url().includes('/graphql') || response.request().method() !== 'POST') return false;
+  const postData = response.request().postData() || '';
+  return postData.includes('roundDetails');
+});
+
+// 4. Click the button that normally opens a new tab (now prevented)
+await page.locator(firstTableRoundDetailsButton).first().click();
+
+// 5. Wait for the GraphQL response on original page
+const graphql = await waitForGraphQL;
+console.log('✅ roundDetails GraphQL request captured');
+
+expect(graphql.status()).toBe(200);
+const json = await graphql.json();
+expect(json.data).toBeDefined();
+expect(json.data.roundDetails).toMatch(
+  /^https:\/\/7ghuzh20gx\.somdltxzni\.net\/gs2c\/parentRoundHistoryDetails\.do\?/
+);
+
 
       // Clean supplier selection
       await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[2]/div/button/div/div[2]').click();

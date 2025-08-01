@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "AUTH_SESSION_ID",
-      "value": "6354d571-bbf1-4ce7-8189-45be643b8a5b.cf9bbaefd261-2021",
+      "value": "fe4183be-a191-4d03-acbd-53da91cb995f.6f0f1cddc26a-35009",
       "domain": "auth-bo.hub88.io",
       "path": "/auth/realms/hub88_bo/",
       "expires": -1,
@@ -12,7 +12,7 @@
     },
     {
       "name": "AUTH_SESSION_ID_LEGACY",
-      "value": "6354d571-bbf1-4ce7-8189-45be643b8a5b.cf9bbaefd261-2021",
+      "value": "fe4183be-a191-4d03-acbd-53da91cb995f.6f0f1cddc26a-35009",
       "domain": "auth-bo.hub88.io",
       "path": "/auth/realms/hub88_bo/",
       "expires": -1,
@@ -22,7 +22,7 @@
     },
     {
       "name": "KEYCLOAK_IDENTITY",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlZWY1NDVlYy00NjYwLTQ2MDItYmNlOS01ODdlN2JkMmNmNGUifQ.eyJleHAiOjE3NTQwMDE3MDEsImlhdCI6MTc1Mzk2NTcwMSwianRpIjoiYzJmZWE0ZDUtZGM4OC00N2E5LWJiN2ItNGZjMDA0MDg0ZGRkIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLWJvLmh1Yjg4LmlvL2F1dGgvcmVhbG1zL2h1Yjg4X2JvIiwic3ViIjoiN2YyYmEyYWItMTg1OC00MWMzLWJhMmEtZDZlNDgxOGUzYzc2IiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiI2MzU0ZDU3MS1iYmYxLTRjZTctODE4OS00NWJlNjQzYjhhNWIiLCJzaWQiOiI2MzU0ZDU3MS1iYmYxLTRjZTctODE4OS00NWJlNjQzYjhhNWIiLCJzdGF0ZV9jaGVja2VyIjoiUTk5bm9xdWlWUHB2T1NuSzh3QTdqN3FaeWhwREh4Ynp4dFF6VmJoYnlEWSJ9.tztMh17rhEv9g4n1YikppJNSBeafvUsBYe-gcSz4qUk",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlZWY1NDVlYy00NjYwLTQ2MDItYmNlOS01ODdlN2JkMmNmNGUifQ.eyJleHAiOjE3NTQwNjU3MzgsImlhdCI6MTc1NDAyOTczOCwianRpIjoiOGEyNDdjMGUtYWJjZS00YTViLTlhY2MtMTliNmI1Nzg3ZmU5IiwiaXNzIjoiaHR0cHM6Ly9hdXRoLWJvLmh1Yjg4LmlvL2F1dGgvcmVhbG1zL2h1Yjg4X2JvIiwic3ViIjoiN2YyYmEyYWItMTg1OC00MWMzLWJhMmEtZDZlNDgxOGUzYzc2IiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiJmZTQxODNiZS1hMTkxLTRkMDMtYWNiZC01M2RhOTFjYjk5NWYiLCJzaWQiOiJmZTQxODNiZS1hMTkxLTRkMDMtYWNiZC01M2RhOTFjYjk5NWYiLCJzdGF0ZV9jaGVja2VyIjoiRURjbVRjSGRIZ3lpcUdEY0RxMncycFoyeUpMek1PaXJQUm01UnY1MXY5RSJ9.Qk5AwYhcWdTB6VutbP3IE8iz4kzs1mf3Bc-TCG1i-3o",
       "domain": "auth-bo.hub88.io",
       "path": "/auth/realms/hub88_bo/",
       "expires": -1,
@@ -32,7 +32,7 @@
     },
     {
       "name": "KEYCLOAK_IDENTITY_LEGACY",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlZWY1NDVlYy00NjYwLTQ2MDItYmNlOS01ODdlN2JkMmNmNGUifQ.eyJleHAiOjE3NTQwMDE3MDEsImlhdCI6MTc1Mzk2NTcwMSwianRpIjoiYzJmZWE0ZDUtZGM4OC00N2E5LWJiN2ItNGZjMDA0MDg0ZGRkIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLWJvLmh1Yjg4LmlvL2F1dGgvcmVhbG1zL2h1Yjg4X2JvIiwic3ViIjoiN2YyYmEyYWItMTg1OC00MWMzLWJhMmEtZDZlNDgxOGUzYzc2IiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiI2MzU0ZDU3MS1iYmYxLTRjZTctODE4OS00NWJlNjQzYjhhNWIiLCJzaWQiOiI2MzU0ZDU3MS1iYmYxLTRjZTctODE4OS00NWJlNjQzYjhhNWIiLCJzdGF0ZV9jaGVja2VyIjoiUTk5bm9xdWlWUHB2T1NuSzh3QTdqN3FaeWhwREh4Ynp4dFF6VmJoYnlEWSJ9.tztMh17rhEv9g4n1YikppJNSBeafvUsBYe-gcSz4qUk",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlZWY1NDVlYy00NjYwLTQ2MDItYmNlOS01ODdlN2JkMmNmNGUifQ.eyJleHAiOjE3NTQwNjU3MzgsImlhdCI6MTc1NDAyOTczOCwianRpIjoiOGEyNDdjMGUtYWJjZS00YTViLTlhY2MtMTliNmI1Nzg3ZmU5IiwiaXNzIjoiaHR0cHM6Ly9hdXRoLWJvLmh1Yjg4LmlvL2F1dGgvcmVhbG1zL2h1Yjg4X2JvIiwic3ViIjoiN2YyYmEyYWItMTg1OC00MWMzLWJhMmEtZDZlNDgxOGUzYzc2IiwidHlwIjoiU2VyaWFsaXplZC1JRCIsInNlc3Npb25fc3RhdGUiOiJmZTQxODNiZS1hMTkxLTRkMDMtYWNiZC01M2RhOTFjYjk5NWYiLCJzaWQiOiJmZTQxODNiZS1hMTkxLTRkMDMtYWNiZC01M2RhOTFjYjk5NWYiLCJzdGF0ZV9jaGVja2VyIjoiRURjbVRjSGRIZ3lpcUdEY0RxMncycFoyeUpMek1PaXJQUm01UnY1MXY5RSJ9.Qk5AwYhcWdTB6VutbP3IE8iz4kzs1mf3Bc-TCG1i-3o",
       "domain": "auth-bo.hub88.io",
       "path": "/auth/realms/hub88_bo/",
       "expires": -1,
@@ -42,20 +42,20 @@
     },
     {
       "name": "KEYCLOAK_SESSION",
-      "value": "hub88_bo/7f2ba2ab-1858-41c3-ba2a-d6e4818e3c76/6354d571-bbf1-4ce7-8189-45be643b8a5b",
+      "value": "hub88_bo/7f2ba2ab-1858-41c3-ba2a-d6e4818e3c76/fe4183be-a191-4d03-acbd-53da91cb995f",
       "domain": "auth-bo.hub88.io",
       "path": "/auth/realms/hub88_bo/",
-      "expires": 1754001700.991722,
+      "expires": 1754065738.393777,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "KEYCLOAK_SESSION_LEGACY",
-      "value": "hub88_bo/7f2ba2ab-1858-41c3-ba2a-d6e4818e3c76/6354d571-bbf1-4ce7-8189-45be643b8a5b",
+      "value": "hub88_bo/7f2ba2ab-1858-41c3-ba2a-d6e4818e3c76/fe4183be-a191-4d03-acbd-53da91cb995f",
       "domain": "auth-bo.hub88.io",
       "path": "/auth/realms/hub88_bo/",
-      "expires": 1754001700.991732,
+      "expires": 1754065738.393792,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Lax"
@@ -65,17 +65,17 @@
       "value": "*",
       "domain": "bo-v3.hub88.io",
       "path": "/",
-      "expires": 1753967503,
+      "expires": 1754031540,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "_cnv_id.463b",
-      "value": "5ecc7840-e481-420a-b104-c358c2579616.1753965677.1.1753965703..ad153ec5-7d3a-4a82-b013-825529d035c9...",
+      "value": "53d62121-e04b-4f9e-80fd-b72d37326b48.1754029713.1.1754029741..a0ee5e00-9fca-4c90-bd2a-239f3c4d04b9...",
       "domain": "bo-v3.hub88.io",
       "path": "/",
-      "expires": 1788525703.278472,
+      "expires": 1788589740.680676,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -91,7 +91,7 @@
         },
         {
           "name": "Conviva.sdkConfig",
-          "value": "{\"clId\":\"913461940.2025577192.1043223009.600465610\",\"iid\":973434730}"
+          "value": "{\"clId\":\"1043932097.404556246.84623174.1555948162\",\"iid\":1527342808}"
         },
         {
           "name": "ConvivaVisualLabellingConfig",
@@ -103,7 +103,7 @@
         },
         {
           "name": "ConvivaRemoteConfig",
-          "value": "{\"cacheRefreshInterval\":60,\"base64\":false,\"lifecycleAutotracking\":false,\"exceptionAutotracking\":true,\"enablePeriodicHeartbeat\":true,\"periodicHeartbeatInterval\":40,\"enc\":\"gzip\",\"customEventTrackingConfiguration\":{\"enabled\":true},\"networkRequestTrackingConfiguration\":{\"blocklist\":[\"*\"]},\"traceparentconfig\":{\"enabled\":false,\"pref\":2,\"targetUrl\":[]},\"performanceContextConfig\":2,\"mend\":true,\"configurationVersion\":4000,\"catRcLastUpdatedTs\":1753965677064,\"endpoint\":\"https://appgw.conviva.com\",\"emitterConfiguration\":{\"batching\":{\"enabled\":true,\"byteLimitPostInKB\":250,\"batchingIntervalInSec\":5,\"urgentEvents\":[\"abg\",\"ae\"]}},\"applicationContext\":true,\"di\":{\"en\":false,\"lim\":30},\"clickcc\":{\"en\":true,\"cssSelectorList\":\"\\n  button,\\n  a,\\n  li,\\n  select,\\n  input:not([type=\\\"hidden\\\"]),\\n  textarea,\\n  video,\\n  audio,\\n  [role=\\\"button\\\"],\\n  [class^=\\\"btn\\\"],\\n  [class*=\\\"click\\\"],\\n  [data-click],\\n  [data-action],\\n  [tabindex],\\n  [role=\\\"datepicker\\\"],\\n  [class*=\\\"datepicker\\\"],\\n  [class*=\\\"date-picker\\\"],\\n  [class*=\\\"mat-datepicker\\\"],\\n  [class*=\\\"ant-picker\\\"],\\n  [class*=\\\"v-date-picker\\\"],\\n  [class*=\\\"react-datepicker\\\"],\\n  [class*=\\\"ngx-datepicker\\\"],\\n  [data-role=\\\"button\\\"],\\n  [data-ng-click],\\n  [ng-click],\\n  [v-on\\\\:click],\\n  [\\\\@click],\\n  [onclick],\\n  [data-test-id*=\\\"click\\\"],\\n  [data-testid*=\\\"button\\\"],\\n  [class*=\\\"-btn\\\"],\\n  [class*=\\\"-button\\\"],\\n  [class*=\\\"mat-button\\\"],\\n  [class*=\\\"v-btn\\\"],\\n  [class*=\\\"v-icon-button\\\"],\\n  [data-listener-count-click],\\n  [class*=\\\"Button\\\"]\\n\",\"uiMode\":\"closest\"}}"
+          "value": "{\"cacheRefreshInterval\":60,\"base64\":false,\"lifecycleAutotracking\":false,\"exceptionAutotracking\":true,\"enablePeriodicHeartbeat\":true,\"periodicHeartbeatInterval\":40,\"enc\":\"gzip\",\"customEventTrackingConfiguration\":{\"enabled\":true},\"networkRequestTrackingConfiguration\":{\"blocklist\":[\"*\"]},\"traceparentconfig\":{\"enabled\":false,\"pref\":2,\"targetUrl\":[]},\"performanceContextConfig\":2,\"mend\":true,\"configurationVersion\":4000,\"catRcLastUpdatedTs\":1754029713272,\"endpoint\":\"https://appgw.conviva.com\",\"emitterConfiguration\":{\"batching\":{\"enabled\":true,\"byteLimitPostInKB\":250,\"batchingIntervalInSec\":5,\"urgentEvents\":[\"abg\",\"ae\"]}},\"applicationContext\":true,\"di\":{\"en\":false,\"lim\":30},\"clickcc\":{\"en\":true,\"cssSelectorList\":\"\\n  button,\\n  a,\\n  li,\\n  select,\\n  input:not([type=\\\"hidden\\\"]),\\n  textarea,\\n  video,\\n  audio,\\n  [role=\\\"button\\\"],\\n  [class^=\\\"btn\\\"],\\n  [class*=\\\"click\\\"],\\n  [data-click],\\n  [data-action],\\n  [tabindex],\\n  [role=\\\"datepicker\\\"],\\n  [class*=\\\"datepicker\\\"],\\n  [class*=\\\"date-picker\\\"],\\n  [class*=\\\"mat-datepicker\\\"],\\n  [class*=\\\"ant-picker\\\"],\\n  [class*=\\\"v-date-picker\\\"],\\n  [class*=\\\"react-datepicker\\\"],\\n  [class*=\\\"ngx-datepicker\\\"],\\n  [data-role=\\\"button\\\"],\\n  [data-ng-click],\\n  [ng-click],\\n  [v-on\\\\:click],\\n  [\\\\@click],\\n  [onclick],\\n  [data-test-id*=\\\"click\\\"],\\n  [data-testid*=\\\"button\\\"],\\n  [class*=\\\"-btn\\\"],\\n  [class*=\\\"-button\\\"],\\n  [class*=\\\"mat-button\\\"],\\n  [class*=\\\"v-btn\\\"],\\n  [class*=\\\"v-icon-button\\\"],\\n  [data-listener-count-click],\\n  [class*=\\\"Button\\\"]\\n\",\"uiMode\":\"closest\"}}"
         },
         {
           "name": "bo-coachmarks",
@@ -111,7 +111,7 @@
         },
         {
           "name": "convivaOutQueue_CAT_post2.expires",
-          "value": "1817037704554"
+          "value": "1817101740956"
         },
         {
           "name": "bo-segments",
