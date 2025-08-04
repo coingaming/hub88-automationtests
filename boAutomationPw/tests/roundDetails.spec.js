@@ -2,14 +2,15 @@ const { test, expect } = require('@playwright/test');
 const config = require('../config/test.config.js');
 const {
   rangeSelector,
-  yesterdayOption,
+  rangeOption,
   applyRangeButton,
   supplierFilterTab,
   supplierDropdown,
   supplierBox,
   supplierSearchInput,
   firstSupplierButton,
-  firstTableRoundDetailsButton
+  firstTableRoundDetailsButton,
+  closeIconSupplier
 } = require('../pageObjects/transactions.js');
 
 test.use({ storageState: 'storageState.json' });
@@ -20,7 +21,6 @@ const suppliers = [
 
 // Use config instead of hardcoded URL
 const endpoint = config.endpoints.transactions;
-const apiEndpoint = config.endpoints.baseUrl;
 
 test.describe('Supplier roundDetails GraphQL check', () => {
   for (const supplier of suppliers) {
@@ -30,7 +30,7 @@ test.describe('Supplier roundDetails GraphQL check', () => {
 
       // Click sequence to open supplier selection
       await page.locator(rangeSelector).first().click();
-      await page.locator(yesterdayOption).click();
+      await page.locator(rangeOption).click();
       await page.locator(applyRangeButton).click();
 
       // Selector of Filter Tabs
@@ -87,22 +87,16 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       await page.locator(firstTableRoundDetailsButton).first().click();
 
       // Give it a short time to possibly open a tab
-      await page.waitForTimeout(1000); // Adjust if needed
+      await page.waitForTimeout(5000); // Adjust if needed
 
       // Assert that a new tab was triggered
       expect(newTabOpened).toBeTruthy();
-
-    //   // Clean supplier selection
-    //   const input2 = await page.waitForSelector('//button[.//div[contains(text(), "Suppliers: 1")]]', { state: 'visible' });
-    //   await input2.hover();
-    //   await page.locator('//svg[contains(@class, "IconCloseRounded")]').click();
-    // });
 
     // 1. Locate the button that contains the "Suppliers: 1" label
       const supplierButton = page.locator('//button[.//div[contains(text(), "Suppliers: 1")]]');
       await supplierButton.hover();
 
-      const closeIcon = page.locator(`//*[@id="root"]/div/div/main/div/div[1]/div[2]/div/button/div/div[2]`);
+      const closeIcon = page.locator(closeIconSupplier);
 
       await closeIcon.click({ timeout: 2000 });
     });
