@@ -45,7 +45,6 @@ test.describe('Supplier roundDetails check', () => {
       // click the input field to search for the supplier
       const input = await page.waitForSelector(supplierSearchInput, { state: 'visible' });
       await input.click({ clickCount: 3 }); // Select existing text
-      await input.fill('');                 // Clear the field
       await input.type(supplier, { delay: 50 }); // Type the value like a user
 
       // Click the first label/div in the dropdown list
@@ -56,6 +55,10 @@ test.describe('Supplier roundDetails check', () => {
 
       // Click outside to confirm selection
       await page.locator('img[alt="logo"]').click();
+
+      // Wait for the table to load and check the first data row
+      await expect(page.locator('table tr').nth(1)).toContainText(supplier, { timeout: 5000 });
+
 
       // // Selector of Filter Tabs - Select Status Filter
       // await page.locator(supplierFilterTab).click();
@@ -69,11 +72,6 @@ test.describe('Supplier roundDetails check', () => {
           console.log('Blocked opening new tab to:', url);
           // Don't open a new tab at all
         };
-      });
-
-      // 2. Listen for new pages and close them immediately if any slip through
-      page.context().on('page', async (newPage) => {
-        await newPage.close();
       });
 
       // Track if a new tab was opened
@@ -93,11 +91,13 @@ test.describe('Supplier roundDetails check', () => {
       // Give it a short time to possibly open a tab
       await Promise.race([
         waitForNewTab,
-        page.waitForTimeout(7000) // Only wait as long as needed
+        page.waitForTimeout(2000) // Only wait as long as needed
       ]);
 
       // Assert that a new tab was triggered
       expect(newTabOpened).toBeTruthy();
+      // await waitForNewTab.waitForLoadState();
+      // console.log('New tab URL:', waitForNewTab.url());
     });
   }
 });
