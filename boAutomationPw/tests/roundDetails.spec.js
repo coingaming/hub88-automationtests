@@ -70,7 +70,6 @@ test.describe('Supplier roundDetails GraphQL check', () => {
 
       // 2. Listen for new pages and close them immediately if any slip through
       page.context().on('page', async (newPage) => {
-        console.log('⚠️ New tab detected and will be closed');
         await newPage.close();
       });
 
@@ -79,7 +78,7 @@ test.describe('Supplier roundDetails GraphQL check', () => {
 
       page.context().on('page', async (newPage) => {
         newTabOpened = true;
-        console.log('⚠️ New tab detected — closing it');
+        console.log('✅ New tab detected — closing it');
         await newPage.close();
       });
 
