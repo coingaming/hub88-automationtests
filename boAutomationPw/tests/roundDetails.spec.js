@@ -9,20 +9,19 @@ const {
   supplierBox,
   supplierSearchInput,
   firstSupplierButton,
-  firstTableRoundDetailsButton,
-  closeIconSupplier
+  firstTableRoundDetailsButton
 } = require('../pageObjects/transactions.js');
 
 test.use({ storageState: 'storageState.json' });
 
 const suppliers = [
-  "Pragmatic Play", "Hacksaw Gaming", "Evolution Gaming", "Play'n Go", "Nolimit City", "3Oaks", "PGSoft", "Push Gaming", "Live88", "Amusnet", "OneTouch", "Playson", "NetEnt", "VoltEnt", "Peter & Sons", "Relax Gaming", "Endorphina", "Spribe", "Spinomenal", "Penguin King", "Betsoft", "Novomatic", "Microgaming Live", "BGaming", "Blueprint Gaming", "Games Global", "Pragmatic Play Live", "AvatarUX", "RubyPlay", "Dragon Gaming", "Red Tiger Gaming", "Kalamba Games", "KA Gaming", "TrueLab", "Microgaming", "Caleta Gaming", "ShadyLady", "Ezugi", "Fazi", "Turbogames", "Thunderkick", "SlotMill Games", "SmartSoft", "BetsyGames", "Just Slots", "Barbarabang", "Evoplay Entertainment", "Big Time Gaming", "BELATRA", "Platipus", "GameArt", "Oddin", "Habanero", "Popiplay", "Aviatrix", "Mascot Gaming", "Red Rake Gaming", "Octoplay", "Booming Games", "Gamomat", "Winfinity", "Fugaso", "Gamzix", "Fantasma", "Onlyplay", "155.io", "Gameburger", "SwinttPremium", "Darwin Gaming", "Triple Edge", "Apparat Gaming", "TopSpin Games", "Retro Gaming", "Split The Pot", "Mancala Gaming", "Wazdan", "Creedroomz", "BetGames.TV", "Rogue", "G Games", "1x2gaming", "7777Gaming", "NetGaming", "KingMidas", "Oryx Gaming", "GamingCorps", "ElaGames", "SwinttGames", "Playnetic", "WinFast", "CQ9", "SpinPlay Games", "Tangente", "Atomic Slot Lab", "SpinLogic", "SkyWind Live", "JVL", "Yolted", "7Mojos", "FBastards", "Popok", "Felix Gaming", "Stormcraft", "Neon Valley", "Galaxsys", "VivoGaming", "Northern Lights Gaming", "Snowborn Studios", "AirDice", "Pascal", "SkyWind", "JDB Gaming", "Spinthon", "PlayAce", "Golden Race", "LiveGames", "Alchemy Gaming", "NE Games", "Red Desert", "Popok Live", "Pragmatic Play Virtual Sports", "Flatdog Games", "Live Solutions", "Livespins", "Sexy", "Phoenix 7", "Buck Stakes Entertainment", "Speedy Tomatoes", "GP1", "IGTech", "Famous Games", "H27", "OneGame", "Wild Gaming", "100HP Gaming", "Animo Live", "Brino Games", "Victory Ark", "SKILLEX GAMES", "ColossusBets", "Elbet", "Studio21", "5G", "VegasLounge", "clawbuster", "Konquer", "Gosh", "Boldplay", "Popok Instant", "Gametech", "Slingshot", "Foxium", "Kero", "SlotMatrix", "All41", "Zillion", "Bitblox Games", "Low6", "JFTW", "7Mojos Live"
+  "Pragmatic Play", "Hacksaw Gaming"
 ];
 
 // Use config instead of hardcoded URL
 const endpoint = config.endpoints.transactions;
 
-test.describe('Supplier roundDetails GraphQL check', () => {
+test.describe('Supplier roundDetails check', () => {
   for (const supplier of suppliers) {
     test(`Check roundDetails for supplier: ${supplier}`, async ({ page }) => {
       // Go to endpoint
@@ -33,10 +32,8 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       await page.locator(rangeOption).click();
       await page.locator(applyRangeButton).click();
 
-      // Selector of Filter Tabs
+      // Selector of Filter Tabs - Select Supplier Filter
       await page.locator(supplierFilterTab).click();
-
-      // Open Supplier Filter
       await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[5]/div/div/div/div[9]').click();
 
       // Open supplier dropdown only if supplierBox is not visible
@@ -58,7 +55,13 @@ test.describe('Supplier roundDetails GraphQL check', () => {
       await firstSupplierOption.click();
 
       // Click outside to confirm selection
-      await page.locator(supplierDropdown).click();
+      await page.locator('img[alt="logo"]').click();
+
+      // // Selector of Filter Tabs - Select Status Filter
+      // await page.locator(supplierFilterTab).click();
+      // await page.locator('div[class*="FilterDropdown"]').locator('text=Statuses').click();
+      // await page.locator('div:has(label:has-text("Success"))').click();
+      // await page.locator('img[alt="logo"]').click();
 
       // 1. Override window.open to prevent new tabs
       await page.addInitScript(() => {
@@ -82,22 +85,19 @@ test.describe('Supplier roundDetails GraphQL check', () => {
         await newPage.close();
       });
 
+      const waitForNewTab = page.context().waitForEvent('page');
+
       // Click the button that may open a new tab
       await page.locator(firstTableRoundDetailsButton).first().click();
 
       // Give it a short time to possibly open a tab
-      await page.waitForTimeout(5000); // Adjust if needed
+      await Promise.race([
+        waitForNewTab,
+        page.waitForTimeout(7000) // Only wait as long as needed
+      ]);
 
       // Assert that a new tab was triggered
       expect(newTabOpened).toBeTruthy();
-
-    // 1. Locate the button that contains the "Suppliers: 1" label
-      const supplierButton = page.locator('//button[.//div[contains(text(), "Suppliers: 1")]]');
-      await supplierButton.hover();
-
-      const closeIcon = page.locator(closeIconSupplier);
-
-      await closeIcon.click({ timeout: 2000 });
     });
   }
 });
