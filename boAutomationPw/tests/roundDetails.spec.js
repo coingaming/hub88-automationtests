@@ -21,7 +21,7 @@ const suppliers = [
 // Use config instead of hardcoded URL
 const endpoint = config.endpoints.transactions;
 
-test.describe('Supplier roundDetails check', () => {
+test.describe('Supplier roundDetails check', () => { 
   for (const supplier of suppliers) {
     test(`Check roundDetails for supplier: ${supplier}`, async ({ page }) => {
       // Go to endpoint
@@ -58,13 +58,6 @@ test.describe('Supplier roundDetails check', () => {
 
       // Wait for the table to load and check the first data row
       await expect(page.locator('table tr').nth(1)).toContainText(supplier, { timeout: 5000 });
-
-
-      // // Selector of Filter Tabs - Select Status Filter
-      // await page.locator(supplierFilterTab).click();
-      // await page.locator('div[class*="FilterDropdown"]').locator('text=Statuses').click();
-      // await page.locator('div:has(label:has-text("Success"))').click();
-      // await page.locator('img[alt="logo"]').click();
 
       // 1. Override window.open to prevent new tabs
       await page.addInitScript(() => {
