@@ -5,11 +5,10 @@ const {
   rangeOption,
   applyRangeButton,
   addFilterTab,
-  supplierDropdown,
-  supplierBox,
   supplierSearchInput,
   firstSupplierButton,
-  firstTableRoundDetailsButton
+  firstTableRoundDetailsButton,
+  statusSearchInput
 } = require('../pageObjects/transactions.js');
 
 test.use({ storageState: 'storageState.json' });
@@ -34,13 +33,7 @@ test.describe('Supplier roundDetails check', () => {
 
       // Selector of Filter Tabs - Select Supplier Filter
       await page.locator(addFilterTab).click();
-      await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[5]/div/div/div/div[9]').click();
-
-      // Open supplier dropdown only if supplierBox is not visible
-      const isSupplierBoxVisible = await page.locator(supplierBox).isVisible();
-      if (!isSupplierBoxVisible) {
-        await page.locator(supplierDropdown).click();
-      }
+      await page.locator('div[class*="FilterDropdown"]').getByText('Suppliers', { exact: true }).click();
 
       // click the input field to search for the supplier
       const input = await page.waitForSelector(supplierSearchInput, { state: 'visible' });
@@ -57,7 +50,15 @@ test.describe('Supplier roundDetails check', () => {
       await page.locator('img[alt="logo"]').click();
 
       // Selector of Filter Tabs - Select Status Filter
+      await page.locator(addFilterTab).click();
+      await page.locator('div[class*="FilterDropdown"]').getByText('Statuses', { exact: true }).click();
       
+      // click on the status Success
+      const inputStatus = await page.waitForSelector(statusSearchInput, { state: 'visible' });
+      await inputStatus.click();
+
+      // Click outside to confirm selection
+      await page.locator('img[alt="logo"]').click();
 
       // Wait for the table to load and check the first data row
       await expect(page.locator('table tr').nth(1)).toContainText(supplier, { timeout: 5000 });
