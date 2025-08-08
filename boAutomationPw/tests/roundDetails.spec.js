@@ -4,7 +4,7 @@ const {
   rangeSelector,
   rangeOption,
   applyRangeButton,
-  supplierFilterTab,
+  addFilterTab,
   supplierDropdown,
   supplierBox,
   supplierSearchInput,
@@ -33,7 +33,7 @@ test.describe('Supplier roundDetails check', () => {
       await page.locator(applyRangeButton).click();
 
       // Selector of Filter Tabs - Select Supplier Filter
-      await page.locator(supplierFilterTab).click();
+      await page.locator(addFilterTab).click();
       await page.locator('xpath=/html/body/div/div/div/main/div/div[1]/div[1]/div[5]/div/div/div/div[9]').click();
 
       // Open supplier dropdown only if supplierBox is not visible
@@ -56,10 +56,13 @@ test.describe('Supplier roundDetails check', () => {
       // Click outside to confirm selection
       await page.locator('img[alt="logo"]').click();
 
+      // Selector of Filter Tabs - Select Status Filter
+      
+
       // Wait for the table to load and check the first data row
       await expect(page.locator('table tr').nth(1)).toContainText(supplier, { timeout: 5000 });
 
-      // 1. Override window.open to prevent new tabs
+      // Override window.open to prevent new tabs
       await page.addInitScript(() => {
         window.open = (url) => {
           console.log('Blocked opening new tab to:', url);
