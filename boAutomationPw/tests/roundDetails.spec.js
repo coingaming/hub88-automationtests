@@ -17,7 +17,7 @@ const suppliers = [
 ];
 
 // const suppliers = [
-//   "Fugaso", "H27", "Pragmatic Play", "Hacksaw Gaming"
+//   "Novomatic", "Pragmatic Play Live"
 // ];
 
 // Use config instead of hardcoded URL
@@ -66,6 +66,7 @@ test.describe('Supplier roundDetails check', () => {
 
       // Wait for the table to load and check the first data row
       await expect(page.locator('table tr').nth(1)).toContainText(supplier, { timeout: 5000 });
+      await expect(page.locator('table tr').nth(1)).toContainText('Success', { timeout: 5000 });
 
       // Override window.open to prevent new tabs
       await page.addInitScript(() => {
@@ -87,7 +88,7 @@ test.describe('Supplier roundDetails check', () => {
       // Click the button that may open a new tab
       let buttonAvailable = true;
       try {
-        await page.locator(firstTableRoundDetailsButton).first().click({ timeout: 3000 });
+        await page.locator(firstTableRoundDetailsButton).first().click({ timeout: 10000 });
       } catch {
         console.log('✅ The Round Details button is not available');
         buttonAvailable = false;
