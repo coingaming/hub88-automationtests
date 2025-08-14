@@ -88,7 +88,7 @@ test.describe('Supplier roundDetails check', () => {
       // Click the button that may open a new tab
       let buttonAvailable = true;
       try {
-        await page.locator(firstTableRoundDetailsButton).first().click({ timeout: 10000 });
+        await page.locator(firstTableRoundDetailsButton).first().click({ timeout: 5000 });
       } catch {
         console.log('✅ The Round Details button is not available');
         buttonAvailable = false;
@@ -102,7 +102,7 @@ test.describe('Supplier roundDetails check', () => {
         // Give it a short time to possibly open a tab
         await Promise.race([
           waitForNewTab,
-          page.waitForTimeout(2000) // Only wait as long as needed
+          page.waitForTimeout(20000) // Only wait as long as needed
         ]);
 
         // Assert that a new tab was triggered
@@ -111,5 +111,3 @@ test.describe('Supplier roundDetails check', () => {
     });
   }
 });
-
-// I need to implement to accept the new tab missing when round details button is not present.

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "fbtest": "npx playwright test freebetsAPI-regression.spec.js"
   },
   "keywords": [],
   "author": "",
