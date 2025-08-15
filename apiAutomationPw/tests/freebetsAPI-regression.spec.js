@@ -625,3 +625,421 @@ test.describe('Campaign List Endpoint', () => {
     console.log('✅ Null parameters test passed');
   });
 });
+
+// Reward List Tests
+test.describe('Reward List Endpoint', () => {
+  // Functional Test
+  test('Proper response to valid reward list', async ({ request }) => {
+    const requestBody = {
+      operator_id: operatorID,
+      reward_uuid: '1d46bc38-996f-423c-9b88-d738b2f131c9',
+      campaign_uuid: '49d01c00-c479-4b2a-96bc-a94a010573ca',
+      user: 'qaTestUser',
+      start_time: '2025-02-22T00:00:00Z',
+      end_time: '2025-08-10T00:00:00Z',
+      pagination: {
+       limit: 80
+      }
+    };
+
+    // Generate signature before sending request
+    const signature = await generateSignature(requestBody);
+    
+    const response = await request.post(`${baseUrl}/freebet/rewards/list`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'x-hub88-signature': signature
+        },
+        data: JSON.stringify(requestBody),
+        timeout: 8000 // Will fail if request takes longer than 8 seconds
+    });
+
+    expect(response.status()).toBe(200);
+    const body = await response.json();
+
+  // Check that top-level keys are exactly "rewards" and "pagination"
+  expect(Object.keys(body).sort()).toEqual(['pagination', 'rewards'].sort());
+
+  // Check that "rewards" is an array and "pagination" is an object
+  expect(Array.isArray(body.rewards)).toBe(true);
+  expect(typeof body.pagination).toBe('object');
+  expect(body.pagination).not.toBeNull();
+
+  // Check the keys of the first reward item
+  expect(Object.keys(body.rewards[0]).sort()).toEqual([
+    'status',
+    'reward_uuid',
+    'campaign_uuid',
+    'user',
+    'start_time',
+    'end_time',
+    'game_code',
+    'bet_count',
+    'bet_value',
+    'prepaid_uuid',
+    'currency',
+    'game_id',
+    'sub_partner_id',
+    'operator_reference',
+  ].sort());
+
+    console.log('✅ Reward list functional test passed');
+  });
+
+  // Functional Test - Rewards from specific campaign
+  test('Proper response to valid reward list from specific campaign', async ({ request }) => {
+    const requestBody = {
+      operator_id: operatorID,
+      campaign_uuid: '49d01c00-c479-4b2a-96bc-a94a010573ca',
+      user: 'qaTestUser',
+      start_time: '2025-02-22T00:00:00Z',
+      end_time: '2025-08-10T00:00:00Z',
+      pagination: {
+       limit: 80
+      }
+    };
+
+    // Generate signature before sending request
+    const signature = await generateSignature(requestBody);
+    
+    const response = await request.post(`${baseUrl}/freebet/rewards/list`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'x-hub88-signature': signature
+        },
+        data: JSON.stringify(requestBody),
+        timeout: 8000 // Will fail if request takes longer than 8 seconds
+    });
+
+    expect(response.status()).toBe(200);
+    const body = await response.json();
+
+    // Check that top-level keys are exactly "rewards" and "pagination"
+    expect(Object.keys(body).sort()).toEqual(['pagination', 'rewards'].sort());
+
+    // Check that "rewards" is an array and "pagination" is an object
+    expect(Array.isArray(body.rewards)).toBe(true);
+    expect(typeof body.pagination).toBe('object');
+    expect(body.pagination).not.toBeNull();
+
+    // Check the keys of the first reward item
+      expect(Object.keys(body.rewards[0]).sort()).toEqual([
+      'status',
+      'reward_uuid',
+      'campaign_uuid',
+      'user',
+      'start_time',
+      'end_time',
+      'game_code',
+      'bet_count',
+      'bet_value',
+      'prepaid_uuid',
+      'currency',
+      'game_id',
+      'sub_partner_id',
+      'operator_reference',
+    ].sort());
+
+    console.log('✅ Rewards From a Campaign functional test passed');
+  });
+
+  // Functional Test - Only Operator ID and Reward UUID
+  test('Proper response to valid reward list using only operator id and reward uuid', async ({ request }) => {
+    const requestBody = {
+      operator_id: operatorID,
+      reward_uuid: '1d46bc38-996f-423c-9b88-d738b2f131c9',
+    };
+
+    // Generate signature before sending request
+    const signature = await generateSignature(requestBody);
+    
+    const response = await request.post(`${baseUrl}/freebet/rewards/list`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'x-hub88-signature': signature
+        },
+        data: JSON.stringify(requestBody),
+        timeout: 8000 // Will fail if request takes longer than 8 seconds
+    });
+
+    expect(response.status()).toBe(200);
+    const body = await response.json();
+
+    // Check that top-level keys are exactly "rewards" and "pagination"
+    expect(Object.keys(body).sort()).toEqual(['pagination', 'rewards'].sort());
+
+    // Check that "rewards" is an array and "pagination" is an object
+    expect(Array.isArray(body.rewards)).toBe(true);
+    expect(typeof body.pagination).toBe('object');
+    expect(body.pagination).not.toBeNull();
+
+    // Check the keys of the first reward item
+    expect(Object.keys(body.rewards[0]).sort()).toEqual([
+      'status',
+      'reward_uuid',
+      'campaign_uuid',
+      'user',
+      'start_time',
+      'end_time',
+      'game_code',
+      'bet_count',
+      'bet_value',
+      'prepaid_uuid',
+      'currency',
+      'game_id',
+      'sub_partner_id',
+      'operator_reference',
+    ].sort());
+
+    console.log('✅ Rewards using only operator id and reward uuid functional test passed');
+  });
+
+    // Functional Test - Only Operator ID and Campaign UUID
+    test('Proper response to valid reward list using only operator id and campaign uuid', async ({ request }) => {
+      const requestBody = {
+        operator_id: operatorID,
+        campaign_uuid: '49d01c00-c479-4b2a-96bc-a94a010573ca',
+      };
+
+      // Generate signature before sending request
+      const signature = await generateSignature(requestBody);
+      
+      const response = await request.post(`${baseUrl}/freebet/rewards/list`, {
+          headers: {
+              'Content-Type': 'application/json',
+              'x-hub88-signature': signature
+          },
+          data: JSON.stringify(requestBody),
+          timeout: 8000 // Will fail if request takes longer than 8 seconds
+      });
+
+      expect(response.status()).toBe(200);
+      const body = await response.json();
+
+      // Check that top-level keys are exactly "rewards" and "pagination"
+      expect(Object.keys(body).sort()).toEqual(['pagination', 'rewards'].sort());
+
+      // Check that "rewards" is an array and "pagination" is an object
+      expect(Array.isArray(body.rewards)).toBe(true);
+      expect(typeof body.pagination).toBe('object');
+      expect(body.pagination).not.toBeNull();
+
+      // Check the keys of the first reward item
+      expect(Object.keys(body.rewards[0]).sort()).toEqual([
+        'status',
+        'reward_uuid',
+        'campaign_uuid',
+        'user',
+        'start_time',
+        'end_time',
+        'game_code',
+        'bet_count',
+        'bet_value',
+        'prepaid_uuid',
+        'currency',
+        'game_id',
+        'sub_partner_id',
+        'operator_reference',
+      ].sort());
+
+      console.log('✅ Rewards using only operator id and campaign uuid functional test passed');
+    });
+
+    // Functional Test - Only Operator ID and time range
+    test('Proper response to valid reward list using only operator id and time range', async ({ request }) => {
+      const requestBody = {
+        operator_id: operatorID,
+        start_time: '2025-02-22T00:00:00Z',
+        end_time: '2025-08-10T00:00:00Z',
+      };
+
+      // Generate signature before sending request
+      const signature = await generateSignature(requestBody);
+      
+      const response = await request.post(`${baseUrl}/freebet/rewards/list`, {
+          headers: {
+              'Content-Type': 'application/json',
+              'x-hub88-signature': signature
+          },
+          data: JSON.stringify(requestBody),
+          timeout: 8000 // Will fail if request takes longer than 8 seconds
+      });
+
+      expect(response.status()).toBe(200);
+      const body = await response.json();
+
+      // Check that top-level keys are exactly "rewards" and "pagination"
+      expect(Object.keys(body).sort()).toEqual(['pagination', 'rewards'].sort());
+
+      // Check that "rewards" is an array and "pagination" is an object
+      expect(Array.isArray(body.rewards)).toBe(true);
+      expect(typeof body.pagination).toBe('object');
+      expect(body.pagination).not.toBeNull();
+
+      // Check the keys of the first reward item
+      expect(Object.keys(body.rewards[0]).sort()).toEqual([
+        'status',
+        'reward_uuid',
+        'campaign_uuid',
+        'user',
+        'start_time',
+        'end_time',
+        'game_code',
+        'bet_count',
+        'bet_value',
+        'prepaid_uuid',
+        'currency',
+        'game_id',
+        'sub_partner_id',
+        'operator_reference',
+      ].sort());
+
+      console.log('✅ Rewards using only operator id and time range functional test passed');
+    });
+
+    // Functional Test - Pagination Navigation
+    test('Proper response to valid reward list using pagination navigation', async ({ request }) => {
+      const requestBody = {
+        operator_id: operatorID,
+        start_time: '2025-02-22T00:00:00Z',
+        end_time: '2025-08-10T00:00:00Z',
+      };
+
+      // Generate signature before sending request
+      const signature = await generateSignature(requestBody);
+
+      const response = await request.post(`${baseUrl}/freebet/rewards/list`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-hub88-signature': signature
+        },
+        data: JSON.stringify(requestBody),
+        timeout: 8000 // Will fail if request takes longer than 8 seconds
+      });
+
+      expect(response.status()).toBe(200);
+      console.log('First Request for Pagination Test Passed');
+
+      const body = await response.json();
+
+      const nextCursor = body.pagination.next_cursor;
+      if (nextCursor) {
+        const nextRequestBody = {
+          operator_id: operatorID,
+          start_time: '2025-02-22T00:00:00Z',
+          end_time: '2025-08-10T00:00:00Z',
+          pagination: {
+            cursor: nextCursor,
+            limit: 80
+          }
+        };
+
+        // Generate signature before sending request
+        const nextSignature = await generateSignature(nextRequestBody);
+
+        const nextResponse = await request.post(`${baseUrl}/freebet/rewards/list`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'x-hub88-signature': nextSignature
+          },
+          data: JSON.stringify(nextRequestBody),
+          timeout: 8000 // Will fail if request takes longer than 8 seconds
+        });
+
+        expect(nextResponse.status()).toBe(200);
+        console.log('Pagination Test Next Page Passed');
+
+        const nextBody = await nextResponse.json();
+
+        // Check that top-level keys are exactly "rewards" and "pagination"
+        expect(Object.keys(nextBody).sort()).toEqual(['pagination', 'rewards'].sort());
+
+        // Check that "rewards" is an array and "pagination" is an object
+        expect(Array.isArray(nextBody.rewards)).toBe(true);
+        expect(typeof nextBody.pagination).toBe('object');
+        expect(nextBody.pagination).not.toBeNull();
+
+        // Check the keys of the first reward item
+        expect(Object.keys(nextBody.rewards[0]).sort()).toEqual([
+          'status',
+          'reward_uuid',
+          'campaign_uuid',
+          'user',
+          'start_time',
+          'end_time',
+          'game_code',
+          'bet_count',
+          'bet_value',
+          'prepaid_uuid',
+          'currency',
+          'game_id',
+          'sub_partner_id',
+          'operator_reference',
+        ].sort());
+
+        // Check that the rewards are different from the previous response
+        expect(body.rewards[0].reward_uuid).not.toEqual(nextBody.rewards[0].reward_uuid);
+
+        // Use the new previous_cursor to get the previous page
+        const previousCursor = body.pagination.previous_cursor;
+        if (previousCursor) {
+          const previousRequestBody = {
+            operator_id: operatorID,
+            start_time: '2025-02-22T00:00:00Z',
+            end_time: '2025-08-10T00:00:00Z',
+            pagination: {
+              cursor: previousCursor,
+              limit: 80
+            }
+          };
+
+          // Generate signature before sending request
+          const previousSignature = await generateSignature(previousRequestBody);
+
+          const previousResponse = await request.post(`${baseUrl}/freebet/rewards/list`, {
+            headers: {
+              'Content-Type': 'application/json',
+              'x-hub88-signature': previousSignature
+            },
+            data: JSON.stringify(previousRequestBody),
+            timeout: 8000 // Will fail if request takes longer than 8 seconds
+          });
+
+          expect(previousResponse.status()).toBe(200);
+
+          const previousBody = await previousResponse.json();
+
+          // Check that top-level keys are exactly "rewards" and "pagination"
+          expect(Object.keys(previousBody).sort()).toEqual(['pagination', 'rewards'].sort());
+
+          // Check that "rewards" is an array and "pagination" is an object
+          expect(Array.isArray(previousBody.rewards)).toBe(true);
+          expect(typeof previousBody.pagination).toBe('object');
+          expect(previousBody.pagination).not.toBeNull();
+
+          // Check the keys of the first reward item
+          expect(Object.keys(previousBody.rewards[0]).sort()).toEqual([
+            'status',
+            'reward_uuid',
+            'campaign_uuid',
+            'user',
+            'start_time',
+            'end_time',
+            'game_code',
+            'bet_count',
+            'bet_value',
+            'prepaid_uuid',
+            'currency',
+            'game_id',
+            'sub_partner_id',
+            'operator_reference',
+          ].sort());
+
+          // Check that the rewards are different from the next response
+          expect(body.rewards[0].reward_uuid).not.toEqual(previousBody.rewards[0].reward_uuid);
+        }
+      }
+      console.log('Pagination to Previous Page Test Passed');
+      console.log('✅ Pagination navigation functional test passed');
+    });
+});
