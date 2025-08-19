@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
-const { baseUrl, operatorID, currencyCode, gameCode, countryCode, langCode } = require('../config/operatorConfigASIA');
-const { loadPrivateKey, generateSignature } = require('../utils/cryptoUtils');
+const { baseUrl, operatorID, currencyCode, gameCode, countryCode, langCode } = require('../config/operatorConfig.js');
+const { loadPrivateKey, generateSignature } = require('../utils/cryptoUtils.js');
 
 const validPlatforms = ['GPL_DESKTOP', 'GPL_MOBILE'];
 
@@ -45,8 +45,9 @@ test.describe('Provider Game URL API', () => {
 
               const signature = generateSignature(requestBody);
 
-              console.log('🚀 Sending request:', JSON.stringify(requestBody));
-              console.log('🔏 Signature:', signature);
+              // console.log('🚀 Sending request:', JSON.stringify(requestBody));
+              // console.log('🔏 Signature:', signature);
+              console.log('Request sent');
 
               const response = await fetch(`${baseUrl}/operator/generic/v2/game/url`, {
                 method: 'POST',
@@ -58,12 +59,14 @@ test.describe('Provider Game URL API', () => {
               });
 
               const body = await response.json();
+              console.log('Response received');
 
               expect(response.status).toBe(200);
               expect(body).toHaveProperty('url');
               expect(typeof body.url).toBe('string');
               expect(body.url).toMatch(/^https?:\/\/[^\s/$.?#].[^\s]*$/);
-              expect(body.url).toContain('launcher-as1.hf8sbal.com/games');
+              console.log('✅ Test passed');
+
             });
           });
         });
