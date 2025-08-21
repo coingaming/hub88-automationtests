@@ -5,4 +5,6 @@ module.exports = {
     userProfileButton: '//html/body/div/div/div/div/div[2]/div[1]/div[2]/div[2]/div/button/div',
     // data-testid="logout-button"
     logoutButton: '//html/body/div/div/div/div/div[2]/div[1]/div[2]/div[2]/div/ul/span/button',
+
+    nameInput: 'input[placeholder="Organization Name"]',
 };
