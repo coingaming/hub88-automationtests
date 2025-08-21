@@ -1,0 +1,20 @@
+{
+  "name": "onboarding-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "testh": "npx playwright test --headed",
+    "testd": "npx playwright test --headed --debug",
+    "login": "npx playwright codegen --save-storage=storageState.json https://hw-merch-console.server4.ih.testenv.io/login"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0"
+  }
+}
