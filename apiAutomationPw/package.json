@@ -6,7 +6,11 @@
   "scripts": {
     "test": "npx playwright test",
     "fbtest": "npx playwright test freebetsAPI-regression.spec.js",
-    "glttest": "npx playwright test operatorGameLauncher.spec.js"
+    "glttest": "npx playwright test operatorGameLauncher.spec.js",
+    "test-eu": "PLAYWRIGHT_ENV=eu npx playwright test",
+    "test-staging": "PLAYWRIGHT_ENV=staging npx playwright test",
+    "test-asia": "PLAYWRIGHT_ENV=asia npx playwright test",
+    "test-generic": "PLAYWRIGHT_ENV=generic npx playwright test"
   },
   "keywords": [],
   "author": "",
