@@ -1,7 +1,13 @@
 const { test, expect } = require('@playwright/test');
 const selectors = require('../utils/selectors.js');
 
-test.use({ storageState: 'storageState.json' });
+// test.use({ storageState: 'storageState.json' });
+
+
+test.beforeEach(async ({ context }) => {
+  await context.storageState({ path: 'storageState.json' });
+});
+
 
 test.describe('Onboarding Process Tests', () => {
 
