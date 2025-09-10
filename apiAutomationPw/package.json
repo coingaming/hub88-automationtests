@@ -7,10 +7,10 @@
     "test": "npx playwright test",
     "fbtest": "npx playwright test freebetsAPI-regression.spec.js",
     "glttest": "npx playwright test operatorGameLauncher.spec.js",
-    "test-eu": "PLAYWRIGHT_ENV=eu npx playwright test",
-    "test-staging": "PLAYWRIGHT_ENV=staging npx playwright test",
-    "test-asia": "PLAYWRIGHT_ENV=asia npx playwright test",
-    "test-generic": "PLAYWRIGHT_ENV=generic npx playwright test"
+    "test-eu": "PLAYWRIGHT_ENV=eu npx playwright test operatorGameLauncher.spec.js",
+    "test-staging": "PLAYWRIGHT_ENV=staging npx playwright test operatorGameLauncher.spec.js",
+    "test-asia": "PLAYWRIGHT_ENV=asia npx playwright test operatorGameLauncher.spec.js",
+    "test-psn": "PLAYWRIGHT_ENV=psn npx playwright test operatorGameLauncher.spec.js"
   },
   "keywords": [],
   "author": "",
