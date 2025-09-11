@@ -1,0 +1,23 @@
+{
+  "name": "boperformancetest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:perf": "playwright test transactions.spec.js",
+    "test:perf:bo-eu": "PLAYWRIGHT_ENV=bo-eu playwright test transactions.spec.js",
+    "test:perf:bo-as": "PLAYWRIGHT_ENV=bo-as playwright test transactions.spec.js",
+    "test:perf:k6": "k6 run tests/transactions-performance.js",
+    "test:perf:k6:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-performance.js",
+    "test:perf:k6:bo-as": "K6_ENV=bo-as k6 run tests/transactions-performance.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.1"
+  }
+}
