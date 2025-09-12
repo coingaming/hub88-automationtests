@@ -155,16 +155,16 @@ export default function() {
   const payload = generatePayload();
   
   // Log request details for debugging
-  console.log(`Making request to: ${url}`);
-  console.log(`Headers: ${JSON.stringify(headers)}`);
-  console.log(`Payload: ${JSON.stringify(payload)}`);
+  // console.log(`Making request to: ${url}`);
+  // console.log(`Headers: ${JSON.stringify(headers)}`);
+  // console.log(`Payload: ${JSON.stringify(payload)}`);
   
   // Make the request
   const response = http.post(url, JSON.stringify(payload), { headers });
   
   // Log response details
-  console.log(`Response status: ${response.status}`);
-  console.log(`Response body: ${response.body}`);
+  // console.log(`Response status: ${response.status}`);
+  // console.log(`Response body: ${response.body}`);
   
   // Check if the response was successful
   const success = check(response, {
