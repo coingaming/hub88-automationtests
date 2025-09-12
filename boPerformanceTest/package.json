@@ -8,9 +8,26 @@
     "test:perf": "playwright test transactions.spec.js",
     "test:perf:bo-eu": "PLAYWRIGHT_ENV=bo-eu playwright test transactions.spec.js",
     "test:perf:bo-as": "PLAYWRIGHT_ENV=bo-as playwright test transactions.spec.js",
+    
     "test:perf:k6": "k6 run tests/transactions-performance.js",
     "test:perf:k6:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-performance.js",
-    "test:perf:k6:bo-as": "K6_ENV=bo-as k6 run tests/transactions-performance.js"
+    "test:perf:k6:bo-as": "K6_ENV=bo-as k6 run tests/transactions-performance.js",
+    
+    "test:perf:k6:lastmonth": "k6 run tests/transactions-lastmonth.js",
+    "test:perf:k6:lastmonth:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-lastmonth.js",
+    "test:perf:k6:lastmonth:bo-as": "K6_ENV=bo-as k6 run tests/transactions-lastmonth.js",
+    
+    "test:perf:k6:lastweek-transaction": "k6 run tests/transactions-lastweek-transaction.js",
+    "test:perf:k6:lastweek-transaction:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-lastweek-transaction.js",
+    "test:perf:k6:lastweek-transaction:bo-as": "K6_ENV=bo-as k6 run tests/transactions-lastweek-transaction.js",
+    
+    "test:perf:k6:lastmonth-round": "k6 run tests/transactions-lastmonth-round.js",
+    "test:perf:k6:lastmonth-round:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-lastmonth-round.js",
+    "test:perf:k6:lastmonth-round:bo-as": "K6_ENV=bo-as k6 run tests/transactions-lastmonth-round.js",
+    
+    "test:perf:k6:yesterday-user": "k6 run tests/transactions-yesterday-user.js",
+    "test:perf:k6:yesterday-user:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-yesterday-user.js",
+    "test:perf:k6:yesterday-user:bo-as": "K6_ENV=bo-as k6 run tests/transactions-yesterday-user.js"
   },
   "keywords": [],
   "author": "",
