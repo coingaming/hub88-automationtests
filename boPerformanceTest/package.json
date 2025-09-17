@@ -27,7 +27,15 @@
     
     "test:perf:k6:yesterday-user": "k6 run tests/transactions-yesterday-user.js",
     "test:perf:k6:yesterday-user:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-yesterday-user.js",
-    "test:perf:k6:yesterday-user:bo-as": "K6_ENV=bo-as k6 run tests/transactions-yesterday-user.js"
+    "test:perf:k6:yesterday-user:bo-as": "K6_ENV=bo-as k6 run tests/transactions-yesterday-user.js",
+    
+    "test:perf:k6:yesterday": "k6 run tests/transactions-yesterday.js",
+    "test:perf:k6:yesterday:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-yesterday.js",
+    "test:perf:k6:yesterday:bo-as": "K6_ENV=bo-as k6 run tests/transactions-yesterday.js",
+    
+    "test:perf:k6:lastweek": "k6 run tests/transactions-lastweek.js",
+    "test:perf:k6:lastweek:bo-eu": "K6_ENV=bo-eu k6 run tests/transactions-lastweek.js",
+    "test:perf:k6:lastweek:bo-as": "K6_ENV=bo-as k6 run tests/transactions-lastweek.js"
   },
   "keywords": [],
   "author": "",

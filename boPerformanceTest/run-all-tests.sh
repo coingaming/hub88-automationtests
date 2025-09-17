@@ -33,5 +33,17 @@ npm run test:perf:k6:yesterday-user
 echo "Yesterday with User test completed."
 echo ""
 
+# Run yesterday test
+echo "Running Yesterday test..."
+npm run test:perf:k6:yesterday
+echo "Yesterday test completed."
+echo ""
+
+# Run last week test
+echo "Running Last Week test..."
+npm run test:perf:k6:lastweek
+echo "Last Week test completed."
+echo ""
+
 echo "-----------------------------------"
 echo "All tests completed!"
