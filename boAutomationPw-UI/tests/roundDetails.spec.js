@@ -12,13 +12,13 @@ const {
 
 test.use({ storageState: 'storageState.json' });
 
-const suppliers = [
-  "Pragmatic Play", "Hacksaw Gaming", "Evolution Gaming", "Play'n Go", "Nolimit City", "3Oaks", "PGSoft", "Push Gaming", "Live88", "Amusnet", "OneTouch", "Playson", "NetEnt", "VoltEnt", "Peter & Sons", "Relax Gaming", "Endorphina", "Spribe", "Spinomenal", "Penguin King", "Betsoft", "Novomatic", "Microgaming Live", "BGaming", "Blueprint Gaming", "Games Global", "Pragmatic Play Live", "AvatarUX", "RubyPlay", "Dragon Gaming", "Red Tiger Gaming", "Kalamba Games", "KA Gaming", "TrueLab", "Microgaming", "Caleta Gaming", "ShadyLady", "Ezugi", "Fazi", "Turbogames", "Thunderkick", "SlotMill Games", "SmartSoft", "BetsyGames", "Just Slots", "Barbarabang", "Evoplay Entertainment", "Big Time Gaming", "BELATRA", "Platipus", "GameArt", "Oddin", "Habanero", "Popiplay", "Aviatrix", "Mascot Gaming", "Red Rake Gaming", "Octoplay", "Booming Games", "Gamomat", "Winfinity", "Fugaso", "Gamzix", "Fantasma", "Onlyplay", "155.io", "Gameburger", "SwinttPremium", "Darwin Gaming", "Triple Edge", "Apparat Gaming", "TopSpin Games", "Retro Gaming", "Split The Pot", "Mancala Gaming", "Wazdan", "Creedroomz", "BetGames.TV", "Rogue", "G Games", "1x2gaming", "7777Gaming", "NetGaming", "KingMidas", "Oryx Gaming", "GamingCorps", "ElaGames", "SwinttGames", "Playnetic", "WinFast", "CQ9", "SpinPlay Games", "Tangente", "Atomic Slot Lab", "SpinLogic", "SkyWind Live", "JVL", "Yolted", "7Mojos", "FBastards", "Popok", "Felix Gaming", "Stormcraft", "Neon Valley", "Galaxsys", "VivoGaming", "Northern Lights Gaming", "Snowborn Studios", "AirDice", "Pascal", "SkyWind", "JDB Gaming", "Spinthon", "PlayAce", "Golden Race", "LiveGames", "Alchemy Gaming", "NE Games", "Red Desert", "Popok Live", "Pragmatic Play Virtual Sports", "Flatdog Games", "Live Solutions", "Livespins", "Sexy", "Phoenix 7", "Buck Stakes Entertainment", "Speedy Tomatoes", "IGTech", "H27", "OneGame", "100HP Gaming", "Brino Games", "Victory Ark", "SKILLEX GAMES", "Boldplay", "Popok Instant", "Gametech", "Slingshot", "Foxium", "Kero", "SlotMatrix", "All41", "Zillion", "Bitblox Games", "Low6", "JFTW", "7Mojos Live"
-];
-
 // const suppliers = [
-//   "Novomatic", "Pragmatic Play Live"
+//   "Pragmatic Play", "Hacksaw Gaming", "Evolution Gaming", "Play'n Go", "Nolimit City", "3Oaks", "PGSoft", "Push Gaming", "Live88", "Amusnet", "OneTouch", "Playson", "NetEnt", "VoltEnt", "Peter & Sons", "Relax Gaming", "Endorphina", "Spribe", "Spinomenal", "Penguin King", "Betsoft", "Novomatic", "Microgaming Live", "BGaming", "Blueprint Gaming", "Games Global", "Pragmatic Play Live", "AvatarUX", "RubyPlay", "Dragon Gaming", "Red Tiger Gaming", "Kalamba Games", "KA Gaming", "TrueLab", "Microgaming", "Caleta Gaming", "ShadyLady", "Ezugi", "Fazi", "Turbogames", "Thunderkick", "SlotMill Games", "SmartSoft", "BetsyGames", "Just Slots", "Barbarabang", "Evoplay Entertainment", "Big Time Gaming", "BELATRA", "Platipus", "GameArt", "Oddin", "Habanero", "Popiplay", "Aviatrix", "Mascot Gaming", "Red Rake Gaming", "Octoplay", "Booming Games", "Gamomat", "Winfinity", "Fugaso", "Gamzix", "Fantasma", "Onlyplay", "155.io", "Gameburger", "SwinttPremium", "Darwin Gaming", "Triple Edge", "Apparat Gaming", "TopSpin Games", "Retro Gaming", "Split The Pot", "Mancala Gaming", "Wazdan", "Creedroomz", "BetGames.TV", "Rogue", "G Games", "1x2gaming", "7777Gaming", "NetGaming", "KingMidas", "Oryx Gaming", "GamingCorps", "ElaGames", "SwinttGames", "Playnetic", "WinFast", "CQ9", "SpinPlay Games", "Tangente", "Atomic Slot Lab", "SpinLogic", "SkyWind Live", "JVL", "Yolted", "7Mojos", "FBastards", "Popok", "Felix Gaming", "Stormcraft", "Neon Valley", "Galaxsys", "VivoGaming", "Northern Lights Gaming", "Snowborn Studios", "AirDice", "Pascal", "SkyWind", "JDB Gaming", "Spinthon", "PlayAce", "Golden Race", "LiveGames", "Alchemy Gaming", "NE Games", "Red Desert", "Popok Live", "Pragmatic Play Virtual Sports", "Flatdog Games", "Live Solutions", "Livespins", "Sexy", "Phoenix 7", "Buck Stakes Entertainment", "Speedy Tomatoes", "IGTech", "H27", "OneGame", "100HP Gaming", "Brino Games", "Victory Ark", "SKILLEX GAMES", "Boldplay", "Popok Instant", "Gametech", "Slingshot", "Foxium", "Kero", "SlotMatrix", "All41", "Zillion", "Bitblox Games", "Low6", "JFTW", "7Mojos Live"
 // ];
+
+const suppliers = [
+  "Novomatic", "Pragmatic Play Live"
+];
 
 // Use config instead of hardcoded URL
 const endpoint = config.endpoints.transactions;
@@ -44,7 +44,7 @@ test.describe('Supplier roundDetails check', () => {
       await input.type(supplier, { delay: 50 }); // Type the value like a user
 
       // Click the first label/div in the dropdown list
-      const supplierSelector = `//div[label/input and div/p[normalize-space(text())="${supplier}"]]`;
+      const supplierSelector = `//div[div[div[normalize-space(text())="${supplier}"]]]`;
       const firstSupplierOption = page.locator(supplierSelector);
       await page.waitForSelector(supplierSelector, { timeout: 1000 });
       await expect(firstSupplierOption).toBeVisible();

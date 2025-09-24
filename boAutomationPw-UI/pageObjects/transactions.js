@@ -5,5 +5,5 @@ module.exports = {
     addFilterTab: 'button:has-text("Add Filter")',
     supplierSearchInput: 'input[placeholder="Search for a name..."]',
     firstTableRoundDetailsButton: 'button[aria-label*="Round details"]',
-    statusSearchInput: 'button:has-text("Statuses: All") >> xpath=..//div[div/p[normalize-space(.)="Success"]]',
+    statusSearchInput: 'button:has-text("Statuses: All") >> xpath=..//div[div[div[div[div[div[normalize-space(.)="Success"]]]]]]',
 };
